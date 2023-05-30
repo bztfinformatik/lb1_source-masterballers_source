@@ -6,21 +6,26 @@ import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
+import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 
 @PageTitle("Main")
 @Route(value = "/main")
-public class Mainview extends HorizontalLayout{
+public class Mainview extends VerticalLayout{
     
-    private Image startupimg = new Image("/lb1_source-masterballers_source/pokedex/images/startup.png", "Startup");
-    private TextField name;
-    private Button sayHello;
+    private Image startupimg;
+    private TextField searchbar;
+    private Button submit;
 
     public Mainview() {
-        name = new TextField("Your name");
-        sayHello = new Button("Say hello");
-    
+
+        startupimg = new Image("/lb1_source-masterballers_source/pokedex/images/startup.png", "Startup");
+        searchbar = new TextField("Search the Pokedex");
+        submit = new Button("Submit");
+        
+        add(startupimg);
+        add(submit);
     }
 }

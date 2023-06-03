@@ -11,21 +11,22 @@ import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 
-@PageTitle("Main")
-@Route(value = "/main")
+@PageTitle("Welcome Trainers")
+@Route(value = "")
 public class Mainview extends VerticalLayout{
     
     private Image startupimg;
     private TextField searchbar;
     private Button submit;
-
+    
     public Mainview() {
 
-        startupimg = new Image("/lb1_source-masterballers_source/pokedex/images/startup.png", "Startup");
+        startupimg = new Image("/images/startup-", "Startup");
         searchbar = new TextField("Search the Pokedex");
         submit = new Button("Submit");
         
         add(startupimg);
+        add(searchbar);
         add(submit);
     }
 }

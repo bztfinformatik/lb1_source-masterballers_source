@@ -22,7 +22,11 @@ public class Mainview extends VerticalLayout{
 
     public Mainview() {
 
-        startupimg = new Image("./images/masterballhigh.png", "Startup");
+        StreamResource iStreamResource = new StreamResource("masterballhigh.png", () -> getClass().getResourceAsStream("/images/masterballhigh.png"));
+
+        Image startupimg = new Image(iStreamResource, "my img");
+
+        // startupimg = new Image("pokedex/src/main/java/ch/pokeballers/pokedex/view/images/masterballhigh.png", "Startup");
         searchbar = new TextField("Search the Pokedex");
         submit = new Button("Submit");
         

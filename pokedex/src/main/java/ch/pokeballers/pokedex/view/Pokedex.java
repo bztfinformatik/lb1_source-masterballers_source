@@ -3,6 +3,7 @@ package ch.pokeballers.pokedex.view;
     //Imports
 import com.vaadin.flow.component.Key;
 import com.vaadin.flow.component.button.Button;
+import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.Header;
 import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.notification.Notification;
@@ -16,18 +17,19 @@ import com.vaadin.flow.router.Route;
 @Route(value = "/pokeweb")
 public class Pokedex extends VerticalLayout{
     
-    private Header head;
+    private Image logo;
     private TextField searchbar;
     private Button submit;
 
     public Pokedex(){
-        head = new Header();
+        logo = new Image("C:\\pic\\logo.png", "logo");
         searchbar = new TextField("Search the Pokedex");
         submit = new Button("Submit");
 
-        add(head);
+        
         add(searchbar);
         add(submit);
+        add(logo);
     }
    
 }

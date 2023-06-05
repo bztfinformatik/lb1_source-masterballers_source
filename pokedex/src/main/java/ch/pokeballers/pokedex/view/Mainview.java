@@ -28,6 +28,7 @@ public class Mainview extends VerticalLayout{
         
         startupimg.setHeight("100px");
         startupimg.setWidth("100px");
+        
         add(startupimg);
         add(searchbar);
         add(submit);

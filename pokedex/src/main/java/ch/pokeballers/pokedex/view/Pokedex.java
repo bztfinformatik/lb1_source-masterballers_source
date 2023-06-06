@@ -29,7 +29,7 @@ public class Pokedex extends VerticalLayout{
         StreamResource iStreamResource = new StreamResource("logo.png", () -> getClass().getResourceAsStream("/images/logo.png"));
 
 
-        Image logo = new Image(iStreamResource, "my img");
+        logo = new Image(iStreamResource, "my img");
         searchbar = new TextField("Search the Pokedex");
         submit = new Button("Submit");
 

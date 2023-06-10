@@ -28,7 +28,7 @@ public class Mainview extends VerticalLayout{
     private String apiURL;
     String pokemon = searchbar.getValue();
 
-    public Mainview() {
+    public Mainview(){
 
         StreamResource iStreamResource = new StreamResource("masterballhigh.png", () -> getClass().getResourceAsStream("/images/masterballhigh.png"));
 
@@ -42,58 +42,5 @@ public class Mainview extends VerticalLayout{
         startupimg.setWidth("100px");
  
         add(startupimg, searchbar, submit);
-    }
-
-    
-    public void searchPokemon(){
-        pokemon = searchbar.getValue();
-    
-        try {
-            pokemon = sendGetRequest(apiURL);
-            if (pokemon != null){
-                Notification.show(pokemon);
-            }
-            else{
-                Notification.show("Pokemon nicht gefunden.");
-            }
-        }
-        catch (IOException e){
-            e.printStackTrace();
-        }
-    }
-
-    private String sendGetRequest(String url) throws IOException{
-        HttpURLConnection connection = null;
-        BufferedReader reader = null;
-        StringBuilder response = new StringBuilder();
-    
-        try{
-            URL apiUrl = new URL(url);
-            connection = (HttpURLConnection) apiUrl.openConnection();
-            connection.setRequestMethod("GET");
-    
-            reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-            String line;
-            while ((line = reader.readLine()) != null){
-                response.append(line);
-            }
-        }
-        finally{
-            if (connection != null){
-                connection.disconnect();
-            }
-            if (reader != null){
-                reader.close();
-            }
-        }
-        return response.toString();
-    }
-
-    public void setURL(String apiURL){
-        this.apiURL = apiURL;
-    }
-
-    public String getURL(){
-        return apiURL = pokeapi + pokemon;
     }
 }

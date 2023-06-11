@@ -1,9 +1,12 @@
 package ch.pokeballers.pokedex;
 
 import java.util.List;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class Pokemon {
 	//Variablen erstellt
+	private static final Logger logger = LoggerFactory.getLogger(Ability.class);
 	private int id;
 	private String name;
 	private int base_experience;
@@ -22,6 +25,25 @@ public class Pokemon {
     private List<PokemonMove> moves;
 
 
+	/**
+	 * Konstruktor
+	 * @param id
+	 * @param name
+	 * @param base_experience
+	 * @param height
+	 * @param is_default
+	 * @param order
+	 * @param weight
+	 * @param abilities
+	 * @param forms
+	 * @param game_indices
+	 * @param location_area_encounters
+	 * @param moves
+	 * @param sprites
+	 * @param species
+	 * @param stats
+	 * @param types
+	 */
 	public Pokemon(int id, String name, int base_experience, int height, boolean is_default, int order, int weight, List<PokemonAbility> abilities, List<NamedAPIResource> forms, List<VersionGameIndex> game_indices, String location_area_encounters, List<PokemonMove> moves, PokemonSprites sprites, NamedAPIResource species, List<PokemonStat> stats, List<PokemonType> types) {
 		this.id = id;
 		this.name = name;
@@ -45,6 +67,7 @@ public class Pokemon {
 
 	}
 
+	// Setter und Getter Methoden für die Obrigen Parameter
 	public int getId() {
 		return id;
 	}
@@ -173,6 +196,7 @@ public class Pokemon {
 		this.types = types;
 	}
 
+	// Mit dieser Methode wird die toString Methode überschieben.
 	@Override
 	public String toString() {
 		return "Pokemon{" +

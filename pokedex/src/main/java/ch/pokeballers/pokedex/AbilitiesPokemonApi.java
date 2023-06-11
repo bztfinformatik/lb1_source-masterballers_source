@@ -53,7 +53,7 @@ public class AbilitiesPokemonApi {
 		}
 
 		else {
-			logger.warn("Die API-Anfrage war nicht erfolgreich. Statuscode: " + response.getStatusCodeValue());  // Protokolliere eine Warnung mit dem Statuscode
+			logger.warn("Die API-Anfrage war nicht erfolgreich.");
 		}
 
 		logger.info("ability wurde gegeben");

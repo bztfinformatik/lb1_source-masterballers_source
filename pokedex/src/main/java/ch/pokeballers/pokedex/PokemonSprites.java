@@ -1,10 +1,13 @@
 package ch.pokeballers.pokedex;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @JsonIgnoreProperties(ignoreUnknown = true)
 
 public class PokemonSprites {
 	//Variablen erstellt
+	private static final Logger logger = LoggerFactory.getLogger(Ability.class);
 	private String front_default;
 	private String front_shiny;
 	private String front_female;
@@ -14,6 +17,17 @@ public class PokemonSprites {
 	private String back_female;
 	private String back_shiny_female;
 
+	/**
+	 * Konstruktor
+	 * @param front_default
+	 * @param front_shiny
+	 * @param front_female
+	 * @param front_shiny_female
+	 * @param back_default
+	 * @param back_shiny
+	 * @param back_female
+	 * @param back_shiny_female
+	 */
 	public PokemonSprites(String front_default, String front_shiny, String front_female, String front_shiny_female, String back_default, String back_shiny, String back_female, String back_shiny_female) {
 		this.front_default = front_default;
 		this.front_shiny = front_shiny;
@@ -28,6 +42,7 @@ public class PokemonSprites {
 	public PokemonSprites() {
 	}
 
+	// Setter und Getter Methoden für die Obrigen Parameter
 	public String getFront_default() {
 		return front_default;
 	}
@@ -92,8 +107,10 @@ public class PokemonSprites {
 		this.back_shiny_female = back_shiny_female;
 	}
 
+	// Mit dieser Methode wird die toString Methode überschieben.
 	@Override
 	public String toString() {
+		logger.info("weitere Pokemondaten (Sprites) wurden gesetzt.");
 		return "PokemonSprites{" +
 				"front_default='" + front_default + '\'' +
 				", front_shiny='" + front_shiny + '\'' +

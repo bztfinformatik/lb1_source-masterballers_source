@@ -3,7 +3,7 @@ package ch.pokeballers.pokedex;
 import java.util.List;
 
 public class Pokemon {
-
+	//Variablen erstellt
 	private int id;
 	private String name;
 	private int base_experience;

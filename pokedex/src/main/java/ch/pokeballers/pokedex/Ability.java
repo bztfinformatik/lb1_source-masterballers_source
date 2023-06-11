@@ -1,12 +1,11 @@
 package ch.pokeballers.pokedex;
 
 import java.util.List;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class Ability {
-
+	//Variablen erstellt
 	private static final Logger logger = LoggerFactory.getLogger(AbilitiesPokemonApi.class);
 
 	private int id;

@@ -3,6 +3,7 @@ package ch.pokeballers.pokedex;
 import java.util.List;
 
 public class PokemonMove {
+	//Variablen erstellt
 	private NamedAPIResource move;
 	private List<PokemonMoveVersion> version_group_details;
 

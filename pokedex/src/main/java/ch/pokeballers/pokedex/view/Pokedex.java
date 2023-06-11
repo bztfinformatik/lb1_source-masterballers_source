@@ -25,6 +25,7 @@ import ch.pokeballers.pokedex.PokemonSprites;
 @StyleSheet("styles.css")
 public class Pokedex extends VerticalLayout{
     
+    //Variablen erstellt
     private Image logo;
     private TextField searchbar;
     private Button submit;
@@ -72,9 +73,12 @@ public class Pokedex extends VerticalLayout{
 
         
         if(pokemon != null){
+            // Speichern der verschiedenen endpoints
             pokemonSprites = pokemon.getSprites();
-            //Elemente erstellt 
+            
+            //Elemente erstellt
             Image spriteimg = new Image(pokemonSprites.getFront_default(), "Pokemon Sprite");
+
             TextField disabledField1 = new TextField();
             disabledField1.setReadOnly(true);
             disabledField1.setLabel("Characteristics");

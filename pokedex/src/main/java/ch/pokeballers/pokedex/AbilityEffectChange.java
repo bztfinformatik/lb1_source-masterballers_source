@@ -5,7 +5,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class AbilityEffectChange {
-
+	//Variablen erstellt
 	private static final Logger logger = LoggerFactory.getLogger(Ability.class);
 
 	private List<Effect> effect_entries;

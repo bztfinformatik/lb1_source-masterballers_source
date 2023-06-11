@@ -1,7 +1,7 @@
 package ch.pokeballers.pokedex;
 
 public class NamedAPIResource {
-
+	//Variablen erstellt
 	private String name;
 	private String url;
 

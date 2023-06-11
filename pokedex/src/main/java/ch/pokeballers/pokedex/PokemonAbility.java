@@ -1,7 +1,7 @@
 package ch.pokeballers.pokedex;
 
 public class PokemonAbility {
-
+	//Variablen erstellt
 	private boolean is_hidden;
 	private int slot;
 	private NamedAPIResource ability;

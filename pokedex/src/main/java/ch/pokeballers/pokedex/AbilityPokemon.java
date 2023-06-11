@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class AbilityPokemon {
+	//Variablen erstellt
 	private static final Logger logger = LoggerFactory.getLogger(Ability.class);
 	
 	private boolean is_hidden;

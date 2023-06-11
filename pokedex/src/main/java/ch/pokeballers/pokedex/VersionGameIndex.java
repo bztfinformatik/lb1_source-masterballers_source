@@ -1,7 +1,7 @@
 package ch.pokeballers.pokedex;
 
 public class VersionGameIndex {
-
+	//Variablen erstellt
 	private int game_index;
 	private NamedAPIResource version;
 

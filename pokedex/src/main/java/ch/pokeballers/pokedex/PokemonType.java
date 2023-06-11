@@ -1,7 +1,7 @@
 package ch.pokeballers.pokedex;
 
 public class PokemonType {
-
+	//Variablen erstellt
 	private int slot;
 	private NamedAPIResource type;
 

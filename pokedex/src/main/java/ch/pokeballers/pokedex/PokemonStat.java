@@ -1,7 +1,7 @@
 package ch.pokeballers.pokedex;
 
 public class PokemonStat {
-
+	//Variablen erstellt
 	private NamedAPIResource stat;
 	private int effort;
 	private int base_stat;

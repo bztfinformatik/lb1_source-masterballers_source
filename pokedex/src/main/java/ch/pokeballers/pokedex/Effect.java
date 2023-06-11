@@ -1,19 +1,30 @@
 package ch.pokeballers.pokedex;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class Effect {
+	private static final Logger logger = LoggerFactory.getLogger(Ability.class);
 
 	private String effect;
 	private NamedAPIResource language;
 
-	public Effect(){
 
-	}
-
+	/**
+	 * Konstruktor
+	 * @param effect
+	 * @param language
+	 */
 	public Effect(String effect, NamedAPIResource language) {
 		this.effect = effect;
 		this.language = language;
 	}
 
+	public Effect(){
+
+	}
+
+	// Setter und Getter Methoden für die Obrigen Parameter
 	public String getEffect() {
 		return effect;
 	}
@@ -30,8 +41,10 @@ public class Effect {
 		this.language = language;
 	}
 
+	// Mit dieser Methode wird die toString Methode überschieben.
 	@Override
 	public String toString() {
+		logger.info("weitere Pokemondaten (Effecte) wurden gesetzt.");
 		return "Effect{" +
 				"effect='" + effect + '\'' +
 				", language=" + language +

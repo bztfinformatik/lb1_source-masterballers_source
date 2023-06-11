@@ -2,7 +2,12 @@ package ch.pokeballers.pokedex;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class Ability {
+
+	private static final Logger logger = LoggerFactory.getLogger(AbilitiesPokemonApi.class);
 
 	private int id;
 	private String name;
@@ -27,6 +32,8 @@ public class Ability {
 		this.flavor_text_entries = flavor_text_entries;
 		this.pokemon = pokemon;
 	}
+
+	// Setter und Getter Methoden für die Obrigen Parameter
 
 	public int getId() {
 		return id;
@@ -92,8 +99,10 @@ public class Ability {
 		this.pokemon = pokemon;
 	}
 
+	// Mit dieser Methode wird die toString Methode überschieben.
 	@Override
 	public String toString() {
+		logger.info("Fähigkeitsdaten wurden gesetzt. ");
 		return "Ability{" +
 				"id=" + id +
 				", name='" + name + '\'' +

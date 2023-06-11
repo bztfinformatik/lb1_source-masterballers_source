@@ -17,6 +17,7 @@ import com.vaadin.flow.router.Route;
 import com.vaadin.flow.server.StreamResource;
 
 import ch.pokeballers.pokedex.Pokemon;
+import ch.pokeballers.pokedex.PokemonApi;
 import ch.pokeballers.pokedex.PokemonSprites;
 
 @PageTitle("Pokeweb")
@@ -27,7 +28,9 @@ public class Pokedex extends VerticalLayout{
     private Image logo;
     private TextField searchbar;
     private Button submit;
-    Pokemon pokemon;
+    Pokemon pokemon = null;
+    PokemonApi pokemonApi;
+    PokemonSprites pokemonSprites;
 
     public Pokedex(){
         setClassName("pokeweb-view"); //css Klassenname
@@ -55,16 +58,41 @@ public class Pokedex extends VerticalLayout{
         //Horizontales Zentrieren der Searchbar im Header
         searchbar.getStyle().set("margin-bottom", "35px");
 
-        //Leftarticle und Sprites von PokewebView
-        //Stream-Ressource aus dem resources Ordner logo.png
-        String spriteURL = pokemon.fr
-        StreamResource iStreamResource2 = new StreamResource(".png", () -> getClass().getResourceAsStream("/images/logo.png"));
+        //Wenn der Submit-Buttonn gedrueck wird wird der Wert (!null) in searchText gespeichert und dann von der Pokemon Api abgefragt
+        submit.addClickListener(e -> {
+            // Speichern der Eingabe in die Variable
+            String searchText = searchbar.getValue();
+            if (!searchText.isEmpty()) {
+                pokemon = PokemonApi.getPokemonDataByName(searchText);
+                
+            } else {
+                Notification.show("Please enter a pokemons name");
+            }
+        });
 
-        //Elemente erstellt
-        logo = new Image(iStreamResource1, "mberslogo");
-        TextField disabledField = new TextField();
-        disabledField.setEnabled(false);
-        disabledField.setLabel("Characteristics");
+        
+        if(pokemon != null){
+            pokemonSprites = pokemon.getSprites();
+            //Elemente erstellt 
+            Image spriteimg = new Image(pokemonSprites.getFront_default(), "Pokemon Sprite");
+            TextField disabledField1 = new TextField();
+            disabledField1.setEnabled(false);
+            disabledField1.setLabel();
+
+
+
+            //Leftarticle und Sprites von PokewebView
+            VerticalLayout leftartlayout = new VerticalLayout();
+            leftartlayout.setAlignItems(Alignment.CENTER);
+            leftartlayout.add(spriteimg, disabledField1);
+            leftartlayout.getStyle().set("margin-left", "0px");
+            add(headerLayout);
+        }
+        else{
+            Notification.show("Pokemonname is incorrect (Check the official english name)");
+        }
+
+        
 
         
     }

@@ -17,4 +17,3 @@ public class PokedexApplication {
 		SpringApplication.run(PokedexApplication.class, args);
 	}
 }
-//plagiat: gibt ne 1!

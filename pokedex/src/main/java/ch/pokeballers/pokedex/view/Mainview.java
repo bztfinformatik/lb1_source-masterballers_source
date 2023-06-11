@@ -16,6 +16,7 @@ import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.server.StreamResource;
+import ch.pokeballers.pokedex.PokemonApi;
 
 
 @PageTitle("Welcome Trainers!")
@@ -28,7 +29,8 @@ public class Mainview extends VerticalLayout{
     private TextField searchbar;
     private Button submit;
     private String apiURL;
-    String pokemon;
+    String pokemonname;
+    PokemonApi pokemonApi;
 
     public Mainview(){
         setClassName("main-view"); //css Klassenname
@@ -48,6 +50,18 @@ public class Mainview extends VerticalLayout{
         //Groesse des Bildes startup.png
         startupimg.setHeight("900px");
         
+        //Wenn der Submit-Buttonn gedrueck wird wird der Wert (!null)
+        submit.addClickListener(e -> {
+            // Speichern der Eingabe in die Variable
+            String searchText = searchbar.getValue();
+            if (!searchText.isEmpty()) {
+                PokemonApi.getPokemonDataByName(searchText);
+            } else {
+                Notification.show("Please enter a pokemons name");
+            }
+        });
+    
+}
     
 
     /*
@@ -103,4 +117,3 @@ public class Mainview extends VerticalLayout{
         return apiURL = pokeapi + pokemon;
     } */
     }
-}

@@ -26,30 +26,42 @@ public class Mainview extends VerticalLayout{
     private TextField searchbar;
     private Button submit;
     private String apiURL;
-    String pokemon = searchbar.getValue();
+    String pokemon;
 
     public Mainview() {
 
-        StreamResource iStreamResource = new StreamResource("masterballhigh.png", () -> getClass().getResourceAsStream("/images/masterballhigh.png"));
+        StreamResource iStreamResource = new StreamResource("masterballhigh.png", () -> getClass().getResourceAsStream("/images/startup.png"));
 
-        startupimg = new Image(iStreamResource, "my img");
+        startupimg = new Image(iStreamResource, "startup img");
 
         // startupimg = new Image("pokedex/src/main/java/ch/pokeballers/pokedex/view/images/masterballhigh.png", "Startup");
         searchbar = new TextField("Search the Pokedex");
         submit = new Button("Submit");
-        
-        startupimg.setHeight("100px");
-        startupimg.setWidth("100px");
- 
-        add(startupimg, searchbar, submit);
-    }
 
     
+
+        add(startupimg);
+        add(searchbar, submit);
+        startupimg.setHeight("900px");
+
+        HorizontalLayout imgLayout = new HorizontalLayout();
+        imgLayout.add(startupimg);
+        imgLayout.getStyle().set("display", "flex");
+        imgLayout.getStyle().set("justify-content", "center");
+
+        HorizontalLayout searchLayout = new HorizontalLayout();
+        searchLayout.add(searchbar, submit);
+        searchLayout.getStyle().set("display", "flex");
+        searchLayout.getStyle().set("justify-content", "center");
+        
+    }
+
+    /* 
     public void searchPokemon(){
         pokemon = searchbar.getValue();
     
         try {
-            pokemon = sendGetRequest(apiURL);
+            pokemon = sendGetRequest("https://pokeapi.co/api/v2/pokemon/");
             if (pokemon != null){
                 Notification.show(pokemon);
             }
@@ -59,6 +71,7 @@ public class Mainview extends VerticalLayout{
         }
         catch (IOException e){
             e.printStackTrace();
+            
         }
     }
 
@@ -96,4 +109,6 @@ public class Mainview extends VerticalLayout{
     public String getURL(){
         return apiURL = pokeapi + pokemon;
     }
+
+*/
 }

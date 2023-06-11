@@ -18,6 +18,7 @@ import com.vaadin.flow.server.StreamResource;
 
 import ch.pokeballers.pokedex.Pokemon;
 import ch.pokeballers.pokedex.PokemonApi;
+import ch.pokeballers.pokedex.PokemonMove;
 import ch.pokeballers.pokedex.PokemonSprites;
 
 @PageTitle("Pokeweb")
@@ -32,6 +33,7 @@ public class Pokedex extends VerticalLayout{
     Pokemon pokemon = null;
     PokemonApi pokemonApi;
     PokemonSprites pokemonSprites;
+    PokemonMove pokemonMove;
 
     public Pokedex(){
         setClassName("pokeweb-view"); //css Klassenname
@@ -75,23 +77,51 @@ public class Pokedex extends VerticalLayout{
         if(pokemon != null){
             // Speichern der verschiedenen endpoints
             pokemonSprites = pokemon.getSprites();
-            
-            //Elemente erstellt
+
+            //Sprite wird geholt
             Image spriteimg = new Image(pokemonSprites.getFront_default(), "Pokemon Sprite");
 
-            TextField disabledField1 = new TextField();
-            disabledField1.setReadOnly(true);
-            disabledField1.setLabel("Characteristics");
-            disabledField1.setValue("Value");
+            //verscheidene Datenfelder werden erstellt fuer leftart
+            TextField nameField = new TextField();
+            nameField.setReadOnly(true);
+            nameField.setLabel("Name");
+            nameField.setValue(pokemon.getName());
 
+            TextField idField = new TextField();
+            idField.setReadOnly(true);
+            idField.setLabel("ID");
+            idField.setValue(pokemon.getId());
 
+            TextField weightField = new TextField();
+            idField.setReadOnly(true);
+            idField.setLabel("ID");
+            idField.setValue(pokemon.getWeight());
 
-            //Leftarticle und Sprites von PokewebView
+            TextField heightField = new TextField();
+            idField.setReadOnly(true);
+            idField.setLabel("height");
+            idField.setValue(pokemon.getHeight());
+
+            //Textfields und Sprites von leftarticle
             VerticalLayout leftartlayout = new VerticalLayout();
             leftartlayout.setAlignItems(Alignment.CENTER);
-            leftartlayout.add(spriteimg, disabledField1);
-            leftartlayout.getStyle().set("margin-left", "0px");
-            add(headerLayout);
+            leftartlayout.add(spriteimg, nameField, idField, weightField, heightField);
+            
+
+            //verscheidene Datenfelder werden erstellt fuer rightart
+            TextField describtion = new TextField();
+            nameField.setReadOnly(true);
+            nameField.setLabel("Describtion");
+            nameField.setValue(pokemon.toString());
+
+            VerticalLayout rightartlayout = new VerticalLayout();
+            rightartlayout.setAlignItems(Alignment.CENTER);
+            rightartlayout.add(describtion);
+
+            HorizontalLayout allart = new HorizontalLayout();
+            allart.setAlignItems(Alignment.CENTER);
+            allart.add(leftartlayout, rightartlayout);
+            add(allart);
         }
         else{
             Notification.show("Pokemonname is incorrect (Check the official english name)");

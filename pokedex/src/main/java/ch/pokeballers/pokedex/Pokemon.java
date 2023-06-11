@@ -68,8 +68,8 @@ public class Pokemon {
 	}
 
 	// Setter und Getter Methoden für die Obrigen Parameter
-	public int getId() {
-		return id;
+	public String getId() {
+		return String.valueOf(id);
 	}
 
 	public void setId(int id) {
@@ -92,8 +92,8 @@ public class Pokemon {
 		this.base_experience = base_experience;
 	}
 
-	public int getHeight() {
-		return height;
+	public String getHeight() {
+		return String.valueOf(height);
 	}
 
 	public void setHeight(int height) {
@@ -116,8 +116,8 @@ public class Pokemon {
 		this.order = order;
 	}
 
-	public int getWeight() {
-		return weight;
+	public String getWeight() {
+		return String.valueOf(weight);
 	}
 
 	public void setWeight(int weight) {
@@ -200,13 +200,9 @@ public class Pokemon {
 	@Override
 	public String toString() {
 		return "Pokemon{" +
-				"id=" + id +
-				", name='" + name + '\'' +
 				", base_experience=" + base_experience +
-				", height=" + height +
 				", is_default=" + is_default +
 				", order=" + order +
-				", weight=" + weight +
 				", abilities=" + abilities +
 				", forms=" + forms +
 				", game_indices=" + game_indices +

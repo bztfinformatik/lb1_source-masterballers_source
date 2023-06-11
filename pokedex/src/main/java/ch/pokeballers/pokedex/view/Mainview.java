@@ -6,6 +6,7 @@ import java.net.HttpURLConnection;
 import java.net.URLConnection;
 import java.net.URL;
 import com.vaadin.flow.component.Key;
+import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.dependency.StyleSheet;
 import com.vaadin.flow.component.html.Image;
@@ -24,11 +25,8 @@ import ch.pokeballers.pokedex.PokemonApi;
 @StyleSheet("styles.css")
 public class Mainview extends VerticalLayout{
     
-    private static final String pokeapi = "https://pokeapi.co/api/v2/pokemon/";
     private Image startupimg;
-    private TextField searchbar;
     private Button submit;
-    private String apiURL;
     String pokemonname;
     PokemonApi pokemonApi;
 
@@ -38,82 +36,24 @@ public class Mainview extends VerticalLayout{
 
         //Elemente hinzufuegen
         startupimg = new Image(iStreamResource, "startup img");
-        searchbar = new TextField("Search the Pokedex");
-        submit = new Button("Submit");
+        submit = new Button("Search the Pokedex");
 
         //Zentriert die Elemente senkrecht
         VerticalLayout centerLayout = new VerticalLayout();
         centerLayout.setAlignItems(Alignment.CENTER);
-        centerLayout.add(startupimg, searchbar, submit);
+        centerLayout.add(startupimg, submit);
         add(centerLayout);
 
         //Groesse des Bildes startup.png
         startupimg.setHeight("900px");
         
-        //Wenn der Submit-Buttonn gedrueck wird wird der Wert (!null)
+        //
         submit.addClickListener(e -> {
-            // Speichern der Eingabe in die Variable
-            String searchText = searchbar.getValue();
-            if (!searchText.isEmpty()) {
-                PokemonApi.getPokemonDataByName(searchText);
-            } else {
-                Notification.show("Please enter a pokemons name");
-            }
+            UI.getCurrent().navigate(Pokedex.class);
         });
     
+    }
+    
+
+    
 }
-    
-
-    /*
-    public void searchPokemon(){
-        pokemon = searchbar.getValue();
-    
-        try {
-            pokemon = sendGetRequest(apiURL);
-            if (pokemon != null){
-                Notification.show(pokemon);
-            }
-            else{
-                Notification.show("Pokemon nicht gefunden.");
-            }
-        }
-        catch (IOException e){
-            e.printStackTrace();
-        }
-    }
-
-    private String sendGetRequest(String url) throws IOException{
-        HttpURLConnection connection = null;
-        BufferedReader reader = null;
-        StringBuilder response = new StringBuilder();
-    
-        try{
-            URL apiUrl = new URL(url);
-            connection = (HttpURLConnection) apiUrl.openConnection();
-            connection.setRequestMethod("GET");
-    
-            reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-            String line;
-            while ((line = reader.readLine()) != null){
-                response.append(line);
-            }
-        }
-        finally{
-            if (connection != null){
-                connection.disconnect();
-            }
-            if (reader != null){
-                reader.close();
-            }
-        }
-        return response.toString();
-    }
-
-    public void setURL(String apiURL){
-        this.apiURL = apiURL;
-    }
-
-    public String getURL(){
-        return apiURL = pokeapi + pokemon;
-    } */
-    }

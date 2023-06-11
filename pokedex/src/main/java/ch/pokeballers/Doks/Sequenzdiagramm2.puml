@@ -1,0 +1,67 @@
+@startuml Sequenzdiagramm PokemonAPI
+
+participant Client
+participant PokemonApi
+participant RestTemplate
+participant HttpHeaders
+participant HttpEntity
+participant ResponseEntity
+participant ObjectMapper
+participant Pokemon
+
+Client -> PokemonApi: getPokemonDataById(id)
+activate PokemonApi
+Note right of PokemonApi: Methode aufrufen
+
+PokemonApi -> PokemonApi: Erstelle URL mit ID
+PokemonApi --> Client: getPokemonData(url)
+deactivate PokemonApi
+
+Client -> PokemonApi: getPokemonData(url)
+activate PokemonApi
+Note right of PokemonApi: Methode aufrufen
+
+PokemonApi -> RestTemplate: Erstelle RestTemplate
+activate RestTemplate
+Note right of RestTemplate: Objekt erstellen
+
+PokemonApi -> HttpHeaders: Erstelle HttpHeaders
+activate HttpHeaders
+Note right of HttpHeaders: Objekt erstellen
+
+PokemonApi -> HttpHeaders: setContentType(MediaType.APPLICATION_JSON)
+PokemonApi -> HttpEntity: Erstelle HttpEntity mit HttpHeaders
+activate HttpEntity
+Note right of HttpEntity: Objekt erstellen
+
+PokemonApi -> RestTemplate: exchange(url, HttpMethod.GET, entity, String.class)
+activate RestTemplate
+Note right of RestTemplate: API-Anfrage senden
+
+RestTemplate --> ResponseEntity: Rückgabe der API-Antwort
+deactivate RestTemplate
+deactivate HttpHeaders
+deactivate HttpEntity
+
+PokemonApi -> ResponseEntity: getStatusCode()
+activate ResponseEntity
+Note right of ResponseEntity: Erfolgsstatus prüfen
+
+PokemonApi -> ResponseEntity: getBody()
+Note right of ResponseEntity: JSON-Daten abrufen
+
+PokemonApi -> ObjectMapper: Erstelle ObjectMapper
+activate ObjectMapper
+Note right of ObjectMapper: Objekt erstellen
+
+PokemonApi -> ObjectMapper: readValue(json, Pokemon.class)
+Note right of ObjectMapper: JSON in Pokemon-Objekt umwandeln
+
+ObjectMapper --> Pokemon: Rückgabe des Pokemon-Objekts
+deactivate ObjectMapper
+
+PokemonApi --> Client: Rückgabe des Pokemon-Objekts
+deactivate PokemonApi
+deactivate ResponseEntity
+
+@enduml

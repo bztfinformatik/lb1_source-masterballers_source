@@ -1,0 +1,18 @@
+@startuml Sequenzdiagramm PokemonAbility
+
+participant Client
+participant PokemonAbility
+participant NamedAPIResource
+
+Client -> PokemonAbility: PokemonAbility(is_hidden, slot, ability)
+activate PokemonAbility
+Note right of PokemonAbility: Konstruktoraufruf
+
+PokemonAbility -> PokemonAbility: setIs_hidden(is_hidden)
+PokemonAbility -> PokemonAbility: setSlot(slot)
+PokemonAbility -> PokemonAbility: setAbility(ability)
+
+PokemonAbility --> Client: Rückgabe des erstellten Objekts
+deactivate PokemonAbility
+
+@enduml

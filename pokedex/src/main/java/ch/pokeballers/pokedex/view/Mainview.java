@@ -28,7 +28,7 @@ public class Mainview extends VerticalLayout{
     private String apiURL;
     String pokemon;
 
-    public Mainview() {
+    public Mainview(){
 
         StreamResource iStreamResource = new StreamResource("masterballhigh.png", () -> getClass().getResourceAsStream("/images/startup.png"));
 
@@ -56,12 +56,12 @@ public class Mainview extends VerticalLayout{
         
     }
 
-    /* 
+    
     public void searchPokemon(){
         pokemon = searchbar.getValue();
     
         try {
-            pokemon = sendGetRequest("https://pokeapi.co/api/v2/pokemon/");
+            pokemon = sendGetRequest(apiURL);
             if (pokemon != null){
                 Notification.show(pokemon);
             }
@@ -71,7 +71,6 @@ public class Mainview extends VerticalLayout{
         }
         catch (IOException e){
             e.printStackTrace();
-            
         }
     }
 
@@ -109,6 +108,4 @@ public class Mainview extends VerticalLayout{
     public String getURL(){
         return apiURL = pokeapi + pokemon;
     }
-
-*/
 }

@@ -1,0 +1,206 @@
+@startuml Komponentendiagramm
+
+package "AbilitiesPokemonApi" {
+  class AbilitiesPokemonApi {
+    - logger: Logger
+    + getPokemonAbilityDataById(int): Ability
+    + getPokemonAbilityDataByName(String): Ability
+    - getAbilityData(String): Ability
+  }
+}
+
+package "PokemonApi" {
+  class PokemonApi {
+    - logger: Logger
+    + getPokemonDataById(int): Pokemon
+    + getPokemonDataByName(String): Pokemon
+    - getPokemonData(url: String): Pokemon
+  }
+}
+
+package "Model" {
+  class Pokemon {
+    - logger: Logger
+    - id: int
+    - name: String
+    - base_experience: int
+    - height: int
+    - is_default: boolean
+    - order: int
+    - weight: int
+    - location_area_encounters: String
+    - sprites: PokemonSprites
+    - species: NamedAPIResource
+    - abilities: List<PokemonAbility>
+    - forms: List<NamedAPIResource>
+    - game_indices: List<VersionGameIndex>
+    - stats: List<PokemonStat>
+    - types: List<PokemonType>
+    - moves: List<PokemonMove>
+    + Pokemon(id: int, name: String, base_experience: int, height: int, is_default: boolean, order: int, weight: int, abilities: List<PokemonAbility>, forms: List<NamedAPIResource>, game_indices: List<VersionGameIndex>, location_area_encounters: String, moves: List<PokemonMove>, sprites: PokemonSprites, species: NamedAPIResource, stats: List<PokemonStat>, types: List<PokemonType>)
+    + getId(): int
+    + setId(id: int): void
+    + getName(): String
+    + setName(name: String): void
+    + getBase_experience(): int
+    + setBase_experience(base_experience: int): void
+    + getHeight(): int
+    + setHeight(height: int): void
+    + isIs_default(): boolean
+    + setIs_default(is_default: boolean): void
+    + getOrder(): int
+    + setOrder(order: int): void
+    + getWeight(): int
+    + setWeight(weight: int): void
+    + getLocation_area_encounters(): String
+    + setLocation_area_encounters(location_area_encounters: String): void
+    + getMoves(): List<PokemonMove>
+    + setMoves(moves: List<PokemonMove>): void
+    + getSprites(): PokemonSprites
+    + setSprites(sprites: PokemonSprites): void
+    + getSpecies(): NamedAPIResource
+    + setSpecies(species: NamedAPIResource): void
+    + getStats(): List<PokemonStat>
+    + setStats(stats: List<PokemonStat>): void
+    + getTypes(): List<PokemonType>
+    + setTypes(types: List<PokemonType>): void
+    + getAbilities(): List<PokemonAbility>
+    + setAbilities(abilities: List<PokemonAbility>): void
+    + getForms(): List<NamedAPIResource>
+    + setForms(forms: List<NamedAPIResource>): void
+    + getGame_indices(): List<VersionGameIndex>
+    + setGame_indices(game_indices: List<VersionGameIndex>): void
+    + toString(): String
+  }
+
+  class Ability {
+    - logger: Logger
+    - id: int
+    - name: String
+    - is_main_series: boolean
+    - generation: NamedAPIResource
+    - names: List<Name>
+    - effect with the plantuml keyword.
+    package "Model" {
+class PokemonAbility {
+- logger: Logger
+- is_hidden: boolean
+- slot: int
+- ability: NamedAPIResource
++ PokemonAbility(is_hidden: boolean, slot: int, ability: NamedAPIResource)
++ isIs_hidden(): boolean
++ setIs_hidden(is_hidden: boolean): void
++ getSlot(): int
++ setSlot(slot: int): void
++ getAbility(): NamedAPIResource
++ setAbility(ability: NamedAPIResource): void
+}
+
+class NamedAPIResource {
+- logger: Logger
+- name: String
+- url: String
++ NamedAPIResource(name: String, url: String)
++ getName(): String
++ setName(name: String): void
++ getUrl(): String
++ setUrl(url: String): void
+}
+
+class PokemonSprites {
+- logger: Logger
+- front_default: String
+- front_shiny: String
+- front_female: String
+- front_shiny_female: String
+- back_default: String
+- back_shiny: String
+- back_female: String
+- back_shiny_female: String
++ PokemonSprites(front_default: String, front_shiny: String, front_female: String, front_shiny_female: String, back_default: String, back_shiny: String, back_female: String, back_shiny_female: String)
++ getFront_default(): String
++ setFront_default(front_default: String): void
++ getFront_shiny(): String
++ setFront_shiny(front_shiny: String): void
++ getFront_female(): String
++ setFront_female(front_female: String): void
++ getFront_shiny_female(): String
++ setFront_shiny_female(front_shiny_female: String): void
++ getBack_default(): String
++ setBack_default(back_default: String): void
++ getBack_shiny(): String
++ setBack_shiny(back_shiny: String): void
++ getBack_female(): String
++ setBack_female(back_female: String): void
++ getBack_shiny_female(): String
++ setBack_shiny_female(back_shiny_female: String): void
+}
+
+class PokemonMove {
+- logger: Logger
+- move: NamedAPIResource
+- version_group_details: List<PokemonMoveVersion>
++ PokemonMove(move: NamedAPIResource, version_group_details: List<PokemonMoveVersion>)
++ getMove(): NamedAPIResource
++ setMove(move: NamedAPIResource): void
++ getVersion_group_details(): List<PokemonMoveVersion>
++ setVersion_group_details(version_group_details: List<PokemonMoveVersion>): void
+}
+
+class PokemonMoveVersion {
+- logger: Logger
+- move_learn_method: NamedAPIResource
+- version_group: NamedAPIResource
+- level_learned_at: int
++ PokemonMoveVersion(move_learn_method: NamedAPIResource, version_group: NamedAPIResource, level_learned_at: int)
++ getMove_learn_method(): NamedAPIResource
++ setMove_learn_method(move_learn_method: NamedAPIResource): void
++ getVersion_group(): NamedAPIResource
++ setVersion_group(version_group: NamedAPIResource): void
++ getLevel_learned_at(): int
++ setLevel_learned_at(level_learned_at: int): void
+}
+class PokemonStat {
+- logger: Logger
+- stat: NamedAPIResource
+- effort: int
+- base_stat: int
++ PokemonStat(stat: NamedAPIResource, effort: int, base_stat: int)
++ getStat(): NamedAPIResource
++ setStat(stat: NamedAPIResource): void
++ getEffort(): int
++ setEffort(effort: int): void
++ getBase_stat(): int
++ setBase_stat(base_stat: int): void
+}
+
+class PokemonType {
+- logger: Logger
+- slot: int
+- type: NamedAPIResource
++ PokemonType(slot: int, type: NamedAPIResource)
++ getSlot(): int
++ setSlot(slot: int): void
++ getType(): NamedAPIResource
++ setType(type: NamedAPIResource): void
+}
+}
+
+package "Util" {
+class Logger {
++ Logger()
++ log(message: String): void
+}
+}
+
+PokemonAbility -- PokemonMove
+PokemonAbility -- PokemonSprites
+PokemonAbility -- PokemonStat
+PokemonAbility -- PokemonType
+PokemonMove -- NamedAPIResource
+PokemonMove -- PokemonMoveVersion
+PokemonMoveVersion -- NamedAPIResource
+PokemonSprites -- NamedAPIResource
+PokemonStat -- NamedAPIResource
+PokemonType -- NamedAPIResource
+Logger -- Logger

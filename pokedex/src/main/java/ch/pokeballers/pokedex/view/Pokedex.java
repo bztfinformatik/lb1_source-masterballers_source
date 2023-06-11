@@ -128,8 +128,6 @@ public class Pokedex extends VerticalLayout{
         }
 
         
-
-        
     }
    
 }

@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class Name {
+	private static final Logger logger = LoggerFactory.getLogger(Ability.class);
 
 	private String name;
 	private NamedAPIResource language;

@@ -76,8 +76,9 @@ public class Pokedex extends VerticalLayout{
             //Elemente erstellt 
             Image spriteimg = new Image(pokemonSprites.getFront_default(), "Pokemon Sprite");
             TextField disabledField1 = new TextField();
-            disabledField1.setEnabled(false);
-            disabledField1.setLabel();
+            disabledField1.setReadOnly(true);
+            disabledField1.setLabel("Characteristics");
+            disabledField1.setValue("Value");
 
 
 

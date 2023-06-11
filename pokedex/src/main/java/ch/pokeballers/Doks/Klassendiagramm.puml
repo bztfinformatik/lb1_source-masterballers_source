@@ -1,0 +1,115 @@
+@startuml Klassendiagramm
+
+class AbilitiesPokemonApi {
+  -logger: Logger
+  +getPokemonAbilityDataById(int): Ability
+  +getPokemonAbilityDataByName(String): Ability
+  -getAbilityData(String): Ability
+}
+
+
+
+class Ability {
+  - id: int
+  - name: String
+  - is_main_series: boolean
+  - generation: NamedAPIResource
+  - names: List<Name>
+  - effect_changes: List<AbilityEffectChange>
+  - flavor_text_entries: List<AbilityFlavorText>
+  - pokemon: List<AbilityPokemon>
+  + Ability()
+  + Ability(id: int, name: String, is_main_series: boolean, generation: NamedAPIResource, names: List<Name>, effect_changes: List<AbilityEffectChange>, flavor_text_entries: List<AbilityFlavorText>, pokemon: List<AbilityPokemon>)
+  + getId(): int
+  + setId(id: int): void
+  + getName(): String
+  + setName(name: String): void
+  + isIs_main_series(): boolean
+  + setIs_main_series(is_main_series: boolean): void
+  + getGeneration(): NamedAPIResource
+  + setGeneration(generation: NamedAPIResource): void
+  + getNames(): List<Name>
+  + setNames(names: List<Name>): void
+  + getEffect_changes(): List<AbilityEffectChange>
+  + setEffect_changes(effect_changes: List<AbilityEffectChange>): void
+  + getFlavor_text_entries(): List<AbilityFlavorText>
+  + setFlavor_text_entries(flavor_text_entries: List<AbilityFlavorText>): void
+  + getPokemon(): List<AbilityPokemon>
+  + setPokemon(pokemon: List<AbilityPokemon>): void
+  + toString(): String
+}
+
+class NamedAPIResource {
+  - name: String
+  - url: String
+  + getName(): String
+  + setName(name: String): void
+  + getUrl(): String
+  + setUrl(url: String): void
+}
+
+class Name {
+  - name: String
+  - language: NamedAPIResource
+  + getName(): String
+  + setName(name: String): void
+  + getLanguage(): NamedAPIResource
+  + setLanguage(language: NamedAPIResource): void
+}
+
+class AbilityEffectChange {
+  - effect_entries: List<Effect>
+  - version_group: NamedAPIResource
+  + AbilityEffectChange(effect_entries: List<Effect>, version_group: NamedAPIResource)
+  + AbilityEffectChange()
+  + getEffect_entries(): List<Effect>
+  + setEffect_entries(effect_entries: List<Effect>): void
+  + getVersion_group(): NamedAPIResource
+  + setVersion_group(version_group: NamedAPIResource): void
+  + toString(): String
+}
+
+class Effect {
+  - effect: String
+  - language: NamedAPIResource
+  + getEffect(): String
+  + setEffect(effect: String): void
+  + getLanguage(): NamedAPIResource
+  + setLanguage(language: NamedAPIResource): void
+}
+
+class AbilityFlavorText {
+  - flavor_text: String
+  - language: NamedAPIResource
+  - version_group: NamedAPIResource
+  + getFlavor_text(): String
+  + setFlavor_text(flavor_text: String): void
+  + getLanguage(): NamedAPIResource
+  + setLanguage(language: NamedAPIResource): void
+  + getVersion_group(): NamedAPIResource
+  + setVersion_group(version_group: NamedAPIResource): void
+}
+
+class AbilityPokemon {
+  - is_hidden: boolean
+  - slot: int
+  - pokemon: NamedAPIResource
+  + isIs_hidden(): boolean
+  + setIs_hidden(is_hidden: boolean): void
+  + getSlot(): int
+  + setSlot(slot: int): void
+  + getPokemon(): NamedAPIResource
+  + setPokemon(pokemon: NamedAPIResource): void
+}
+
+Ability --* Name
+Ability --* AbilityEffectChange
+Ability --* AbilityFlavorText
+Ability --* AbilityPokemon
+AbilityEffectChange --* Effect
+AbilityFlavorText --* NamedAPIResource
+AbilityFlavorText --* NamedAPIResource
+AbilityPokemon --* NamedAPIResource
+AbilitiesPokemonApi --> Ability
+
+@enduml

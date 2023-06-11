@@ -30,15 +30,13 @@ public class Mainview extends VerticalLayout{
 
     public Mainview(){
 
-        StreamResource iStreamResource = new StreamResource("masterballhigh.png", () -> getClass().getResourceAsStream("/images/startup.png"));
+        StreamResource iStreamResource = new StreamResource("startup.png", () -> getClass().getResourceAsStream("/images/startup.png"));
 
         startupimg = new Image(iStreamResource, "startup img");
 
-        // startupimg = new Image("pokedex/src/main/java/ch/pokeballers/pokedex/view/images/masterballhigh.png", "Startup");
+        // startupimg = new Image("pokedex/src/main/java/ch/pokeballers/pokedex/view/images/startup.png", "Startup");
         searchbar = new TextField("Search the Pokedex");
         submit = new Button("Submit");
-
-    
 
         add(startupimg);
         add(searchbar, submit);
@@ -56,7 +54,7 @@ public class Mainview extends VerticalLayout{
         
     }
 
-    
+    /*
     public void searchPokemon(){
         pokemon = searchbar.getValue();
     
@@ -107,5 +105,5 @@ public class Mainview extends VerticalLayout{
 
     public String getURL(){
         return apiURL = pokeapi + pokemon;
-    }
+    } */
 }

@@ -1,10 +1,23 @@
-@startuml Klassendiagramm
+@startuml Klassendiagramm Pokeballers
 
-class AbilitiesPokemonApi {
-  - logger: Logger
-  + getPokemonAbilityDataById(int): Ability
-  + getPokemonAbilityDataByName(String): Ability
-  - getAbilityData(String): Ability
+
+class Mainview {
+  - startupimg: Image
+  - submit: Button
+  - pokemonname: String
+  - pokemonApi: PokemonApi
+  + Mainview()
+}
+
+class Pokedex {
+  - logo: Image
+  - searchbar: TextField
+  - submit: Button
+  - pokemon: Pokemon
+  - pokemonApi: PokemonApi
+  - pokemonSprites: PokemonSprites
+  - pokemonMove: PokemonMove
+  + Pokedex()
 }
 
 class Pokemon {
@@ -128,6 +141,13 @@ class PokemonApi {
   + getPokemonDataById(id: int): Pokemon
   + getPokemonDataByName(name: String): Pokemon
   - getPokemonData(url: String): Pokemon
+}
+
+class AbilitiesPokemonApi {
+  - logger: Logger
+  + getPokemonAbilityDataById(int): Ability
+  + getPokemonAbilityDataByName(String): Ability
+  - getAbilityData(String): Ability
 }
 
 class NamedAPIResource {
@@ -305,6 +325,8 @@ class Description {
   + toString(): String
 }
 
+Mainview -- Pokedex
+Pokedex -- NamedAPIResource
 AbilitiesPokemonApi -- Ability
 Ability -- Name
 Ability -- AbilityEffectChange

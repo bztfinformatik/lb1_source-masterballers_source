@@ -3,8 +3,12 @@ package ch.pokeballers.pokedex;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.http.*;
 import org.springframework.web.client.RestTemplate;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class AbilitiesPokemonApi {
+
+	private static final Logger logger = LoggerFactory.getLogger(AbilitiesPokemonApi.class);
 
 	public static Ability getPokemonAbilityDataById(int id) {
 		String apiUrl = "https://pokeapi.co/api/v2/ability/{id}";

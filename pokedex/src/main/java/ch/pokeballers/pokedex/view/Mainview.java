@@ -7,6 +7,7 @@ import java.net.URLConnection;
 import java.net.URL;
 import com.vaadin.flow.component.Key;
 import com.vaadin.flow.component.button.Button;
+import com.vaadin.flow.component.dependency.StyleSheet;
 import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
@@ -19,6 +20,7 @@ import com.vaadin.flow.server.StreamResource;
 
 @PageTitle("Welcome Trainers!")
 @Route(value = "")
+@StyleSheet("styles.css")
 public class Mainview extends VerticalLayout{
     
     private static final String pokeapi = "https://pokeapi.co/api/v2/pokemon/";
@@ -29,30 +31,24 @@ public class Mainview extends VerticalLayout{
     String pokemon;
 
     public Mainview(){
-
+        setClassName("main-view"); //css Klassenname
         StreamResource iStreamResource = new StreamResource("startup.png", () -> getClass().getResourceAsStream("/images/startup.png"));
 
+        //Elemente hinzufuegen
         startupimg = new Image(iStreamResource, "startup img");
-
-        // startupimg = new Image("pokedex/src/main/java/ch/pokeballers/pokedex/view/images/startup.png", "Startup");
         searchbar = new TextField("Search the Pokedex");
         submit = new Button("Submit");
 
-        add(startupimg);
-        add(searchbar, submit);
+        //Zentriert die Elemente senkrecht
+        VerticalLayout centerLayout = new VerticalLayout();
+        centerLayout.setAlignItems(Alignment.CENTER);
+        centerLayout.add(startupimg, searchbar, submit);
+        add(centerLayout);
+
+        //Groesse des Bildes startup.png
         startupimg.setHeight("900px");
-
-        HorizontalLayout imgLayout = new HorizontalLayout();
-        imgLayout.add(startupimg);
-        imgLayout.getStyle().set("display", "flex");
-        imgLayout.getStyle().set("justify-content", "center");
-
-        HorizontalLayout searchLayout = new HorizontalLayout();
-        searchLayout.add(searchbar, submit);
-        searchLayout.getStyle().set("display", "flex");
-        searchLayout.getStyle().set("justify-content", "center");
         
-    }
+    
 
     /*
     public void searchPokemon(){
@@ -106,4 +102,5 @@ public class Mainview extends VerticalLayout{
     public String getURL(){
         return apiURL = pokeapi + pokemon;
     } */
+    }
 }

@@ -199,6 +199,7 @@ public class Pokemon {
 	// Mit dieser Methode wird die toString Methode überschieben.
 	@Override
 	public String toString() {
+		logger.info("Wichtige Informationen des Pokemons wurden vergeben.");
 		return "Pokemon{" +
 				", base_experience=" + base_experience +
 				", is_default=" + is_default +

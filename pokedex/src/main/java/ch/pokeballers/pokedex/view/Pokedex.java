@@ -23,10 +23,10 @@ import ch.pokeballers.pokedex.PokemonSprites;
 
 @PageTitle("Pokeweb")
 @Route(value = "/pokeweb")
-@StyleSheet("styles.css")
+// @StyleSheet("styles.css")
 public class Pokedex extends VerticalLayout{
     
-    //Variablen erstellt
+    //Variablen erstellt<
     private Image logo;
     private TextField searchbar;
     private Button submit;

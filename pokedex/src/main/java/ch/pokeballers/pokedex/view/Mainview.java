@@ -22,7 +22,7 @@ import ch.pokeballers.pokedex.PokemonApi;
 
 @PageTitle("Welcome Trainers!")
 @Route(value = "")
-@StyleSheet("styles.css")
+// @StyleSheet("styles.css")
 public class Mainview extends VerticalLayout{
     
     private Image startupimg;

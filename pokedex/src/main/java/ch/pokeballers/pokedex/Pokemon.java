@@ -14,15 +14,17 @@ public class Pokemon {
 	private boolean is_default;
 	private int order;
 	private int weight;
-    private String location_area_encounters;
-    private PokemonSprites sprites;
-	private NamedAPIResource species;
 	private List<PokemonAbility> abilities;
 	private List<NamedAPIResource> forms;
 	private List<VersionGameIndex> game_indices;
+	private List<PokemonHeldItem> held_items;
+	private String location_area_encounters;
+	private List<PokemonMove> moves;
+	private List<PokemonTypePast> past_types;
+	private PokemonSprites sprites;
+	private NamedAPIResource species;
 	private List<PokemonStat> stats;
 	private List<PokemonType> types;
-    private List<PokemonMove> moves;
 
 
 	/**
@@ -44,7 +46,7 @@ public class Pokemon {
 	 * @param stats
 	 * @param types
 	 */
-	public Pokemon(int id, String name, int base_experience, int height, boolean is_default, int order, int weight, List<PokemonAbility> abilities, List<NamedAPIResource> forms, List<VersionGameIndex> game_indices, String location_area_encounters, List<PokemonMove> moves, PokemonSprites sprites, NamedAPIResource species, List<PokemonStat> stats, List<PokemonType> types) {
+	public Pokemon(int id, String name, int base_experience, int height, boolean is_default, int order, int weight, List<PokemonAbility> abilities, List<NamedAPIResource> forms, List<VersionGameIndex> game_indices, List<PokemonHeldItem> held_items, String location_area_encounters, List<PokemonMove> moves, List<PokemonTypePast> past_types, PokemonSprites sprites, NamedAPIResource species, List<PokemonStat> stats, List<PokemonType> types) {
 		this.id = id;
 		this.name = name;
 		this.base_experience = base_experience;
@@ -55,8 +57,10 @@ public class Pokemon {
 		this.abilities = abilities;
 		this.forms = forms;
 		this.game_indices = game_indices;
+		this.held_items = held_items;
 		this.location_area_encounters = location_area_encounters;
 		this.moves = moves;
+		this.past_types = past_types;
 		this.sprites = sprites;
 		this.species = species;
 		this.stats = stats;
@@ -148,6 +152,14 @@ public class Pokemon {
 		this.game_indices = game_indices;
 	}
 
+	public List<PokemonHeldItem> getHeld_items() {
+		return held_items;
+	}
+
+	public void setHeld_items(List<PokemonHeldItem> held_items) {
+		this.held_items = held_items;
+	}
+
 	public String getLocation_area_encounters() {
 		return location_area_encounters;
 	}
@@ -162,6 +174,22 @@ public class Pokemon {
 
 	public void setMoves(List<PokemonMove> moves) {
 		this.moves = moves;
+	}
+
+	public List<PokemonTypePast> getPast_types() {
+		return past_types;
+	}
+
+	public void setPast_types(List<PokemonTypePast> past_types) {
+		this.past_types = past_types;
+	}
+
+	public PokemonSprites getSprites() {
+		return sprites;
+	}
+
+	public void setSprites(PokemonSprites sprites) {
+		this.sprites = sprites;
 	}
 
 	public NamedAPIResource getSpecies() {
@@ -180,14 +208,6 @@ public class Pokemon {
 		this.stats = stats;
 	}
 
-    public PokemonSprites getSprites() {
-		return sprites;
-	}
-
-	public void setSprites(PokemonSprites sprites) {
-		this.sprites = sprites;
-	}
-
 	public List<PokemonType> getTypes() {
 		return types;
 	}
@@ -199,16 +219,21 @@ public class Pokemon {
 	// Mit dieser Methode wird die toString Methode überschieben.
 	@Override
 	public String toString() {
-		logger.info("Wichtige Informationen des Pokemons wurden vergeben.");
+		logger.info("Wichtige Informationen des Pokemons wurden ausgegeben.");
 		return "Pokemon{" +
+				"id=" + id +
+				", name='" + name + '\'' +
 				", base_experience=" + base_experience +
+				", height=" + height +
 				", is_default=" + is_default +
 				", order=" + order +
+				", weight=" + weight +
 				", abilities=" + abilities +
 				", forms=" + forms +
-				", game_indices=" + game_indices +
+				", held_items=" + held_items +
 				", location_area_encounters='" + location_area_encounters + '\'' +
 				", moves=" + moves +
+				", past_types=" + past_types +
 				", sprites=" + sprites +
 				", species=" + species +
 				", stats=" + stats +
